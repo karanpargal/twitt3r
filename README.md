@@ -1,70 +1,46 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
+<p align="center">
+<b>Twitt3r
+<br></b>
+</p>
+<blockquote align="center">built on <span style="color: #8b0000;">☕</span> at <a href="https://ethforall.devfolio.co/">Mozohack'24</a>.</blockquote>
 
-## Available Scripts
+# 💡 **Problem Statement**
 
-In the project directory, you can run:
+Currently the presiding social medias available on web2 market are centralised and have huge censorship power. We aim to drop the power from the hands of few to the hands of the people
 
-### `npm start`
+# 💪 Goals
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Use Twitt3r to create a safe cyberplace for one using DID
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# 🧠 Knowledge Primer
 
-### `npm test`
+- [DataverseOS SDK](https://gitbook.dataverse-os.com/) is a software development kit that provides multiple features to developers that includes stream creation, wallet connection etc
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 💻 Tech Stack
 
-### `npm run build`
+- React.js
+- TailwindCSS
+- DataverseOS
+- Flutter 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# ⏭️ What's next
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Immersive experiences:It's time we see and engage with the world differently. Right now, we experience augmented reality through games, but there's a lot to it more than entertainment.
+- Support multiple media options: Add support for media like 3d models, VR/AR based posts etc.
+- Encryption: Add additional encryption which allows only people who bought a particular asset of the user can access 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#   Challenges we ran into
 
-### `npm run eject`
+- Working with DataverseOS was challenging for us due to less number of resources available but we managed to work around with what we had
+- Stream creation and then monetizing it was also a bit difficult
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# 📜 License
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`Twitt3r` is available under the MIT license. See the [`LICENSE`](https://opensource.org/license/mit/) file for more info.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 🤝 Contributors
+<a href="https://github.com/karanpargal/twitt3r/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=karanpargal/twitt3r" />
+</a>
