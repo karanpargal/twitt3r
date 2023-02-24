@@ -9,12 +9,13 @@ import {
 const Navbar = (props) => {
   const [identity, setIdentity] = React.useState(null);
   const { runtimeConnector } = props;
-  const connectWallet = async () => {
+
+  const Wallet = async () => {
     
     const did = await runtimeConnector.connectWallet({
-      name: METAMASK,
-      type: CRYPTO_WALLET_TYPE,
+      name: METAMASK, type: CRYPTO_WALLET_TYPE 
     });
+    
     await runtimeConnector.switchNetwork(80001);
     const identity = await runtimeConnector.connectIdentity({
       wallet: { name: METAMASK, type: CRYPTO_WALLET_TYPE },
@@ -26,7 +27,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav class="bg-regal-blue px-2 sm:px-4 py-2.5 rounded ">
+    <nav class="bg-regal-blue px-2 sm:px-4 py-2.5  ">
       <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="#" class="flex items-center">
           <span class="self-center text-xl text-white font-semibold whitespace-nowrap">
@@ -35,13 +36,16 @@ const Navbar = (props) => {
         </a>
         <div class="flex md:order-2">
           {identity ? (
-            <button class="w-48 flex bg-blue-600 items-center p-2 text-base font-normal text-gray-900 rounded-lg ">
+            <button class="w-48 flex bg-blue-600 items-center p-2 text-base font-normal text-gray-900 rounded-lg overflow-hidden">
               {identity}
             </button>
           ) : (
             <button
-              class="flex items-center p-2 text-base font-normal bg-Bluish-white text-gray-900 rounded-lg"
-              onClick={connectWallet}
+              class="flex items-center p-2 text-base font-normal bg-Bluish-white text-gray-900 rounded-lg overflow-hidden"
+              onClick={() => {
+                Wallet();
+              }
+              }
             >
               Connect Wallet
             </button>
@@ -51,7 +55,7 @@ const Navbar = (props) => {
           class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-cta"
         >
-          <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+          <ul class="flex flex-col p-4 mt-4 ml-20 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
             <li>
               <a
                 href="#"

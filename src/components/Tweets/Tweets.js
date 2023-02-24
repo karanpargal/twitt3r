@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { Apps, ModelNames, FileType, Currency } from "@dataverse/runtime-connector";
+import {
+  Apps,
+  ModelNames,
+  FileType,
+  Currency,
+} from "@dataverse/runtime-connector";
 import TweetCard from "../TweetCard/TweetCard";
 
 const Tweets = (props) => {
@@ -44,7 +49,7 @@ const Tweets = (props) => {
   useEffect(() => {
     getDID();
     getStream();
-  }, [did]);
+  }, []);
 
   return (
     <div className="mt-20 ml-80">
@@ -61,7 +66,10 @@ const Tweets = (props) => {
           onChange={(e) => setContent(e.target.value)}
         />
         <div>
-          <button type="submit" disabled={content.length === 0}>Tweet</button>
+          <input type="file" name="file" id="file" className="text-white" />
+          <button type="submit" disabled={content.length === 0}>
+            Tweet
+          </button>
         </div>
       </form>
       <div className="mt-20">
@@ -69,7 +77,12 @@ const Tweets = (props) => {
         {tweets.map((tweet, index) => {
           return (
             <div className="mt-2" key={index}>
-              <TweetCard did={did} stream={stream[index]} tweet={tweet} runtimeConnector={runtimeConnector}/>
+              <TweetCard
+                did={did}
+                stream={stream[index]}
+                tweet={tweet}
+                runtimeConnector={runtimeConnector}
+              />
             </div>
           );
         })}

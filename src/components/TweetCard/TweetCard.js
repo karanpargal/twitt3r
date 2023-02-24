@@ -4,6 +4,15 @@ import { Currency } from "@dataverse/runtime-connector";
 const TweetCard = (props) => {
   const { runtimeConnector } = props;
   const [isMonetized, setIsMonetized] = useState(false);
+  const [tokenID, setTokenID] = useState("");
+
+
+  const buy = async () => {
+    const res = await runtimeConnector.collect(
+      tokenID,
+    );
+    console.log(res);
+  };
 
   const monetize = async () => {
     const dataToken = await runtimeConnector.createDatatoken({
@@ -12,6 +21,7 @@ const TweetCard = (props) => {
       amount: 0.0001,
       currency: Currency.WMATIC,
     });
+    setTokenID(dataToken.datatokenId);
     setIsMonetized(true);
   };
 
@@ -44,28 +54,20 @@ const TweetCard = (props) => {
         <div class="flex justify-between">
           <div class="flex items-center">
             {isMonetized ? (
-              <button class="flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+              <div class="flex items-center text-gray-500  justify-around">
+
+              <button class="hover:text-gray-700 p-2 border-2 rounded-md w-60">
                 Already Monetized
               </button>
+              <button class="hover:text-gray-700 ml-48 p-2 border-2 rounded-md w-28" onClick={buy}>
+                Buy
+              </button>
+              </div>
             ) : (
               <button
                 onClick={monetize}
-                class="flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+                class="text-gray-500 hover:text-gray-700 p-2 border-2 rounded-md w-60"
               >
-                <svg
-                  class="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M8 9l4-4 4 4m0 6l-4 4-4-4"
-                  ></path>
-                </svg>
                 <span class="ml-1 text-sm">Monetize</span>
               </button>
             )}

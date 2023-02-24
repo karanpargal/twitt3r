@@ -10,10 +10,10 @@ const runtimeConnector = new RuntimeConnector(Extension);
 
 function App() {
 
+
   return (
     <div className="App">
       <Navbar runtimeConnector={runtimeConnector}/>
-      {/* <Tweets runtimeConnector={runtimeConnector}/> */}
       <TweetSection runtimeConnector={runtimeConnector}/>
 
     </div>

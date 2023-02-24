@@ -9,7 +9,9 @@ const TweetSection = (props) => {
   const [content, setContent] = React.useState("");
   const [stream, setStream] = React.useState([]);
 
+
   const getDID = async () => {
+    
     const did = await runtimeConnector.getCurrentDID();
     setDid(did);
   };
@@ -27,6 +29,22 @@ const TweetSection = (props) => {
       fileType: FileType.Public,
     });
   };
+
+  const uploadStream = async () => {
+    const target = document.getElementById("image");
+    console.log(target.files[0]);
+    const streamObject = await runtimeConnector.createStream({
+      did: did,
+      appName: Apps.Dataverse,
+      modelName: ModelNames.post,
+      streamContent: {
+        appVersion: "0.0.1",
+        content: target.files[0],
+      },
+      fileType: FileType.Public,
+    });
+  };
+
   // How to get a tweet
   const getStream = async () => {
     const streams = await runtimeConnector.loadStreamsByModel({
@@ -41,49 +59,19 @@ const TweetSection = (props) => {
     });
   };
 
+    const loadProfile = async () => {
+      getDID();
+      getStream();
+    };
+
   useEffect(() => {
-    getDID();
-    getStream();
+    loadProfile();
   }, [did]);
+
   return (
     <div className="flex flex-wrap mt-8">
-      {/* Profile-Section */}
-      <div class=" bg-regal-blue h-64 w-64 text-white max-w-sm  border border-gray-200 rounded-lg shadow ">
-        <img class="rounded-t-lg" src="" alt="profile photo" />
-
-        <div class="p-5">
-          <a href="#">
-            <h5 class="mb-2 text-2xl text-white font-bold tracking-tight text-gray-900 ">
-              name
-            </h5>
-          </a>
-          <p class="mb-3 font-normal text-gray-70">bio</p>
-          <a
-            href="#"
-            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Read more
-            <svg
-              aria-hidden="true"
-              class="w-4 h-4 ml-2 -mr-1"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-
       {/* Tweet-Section */}
-
-      <div className="grow mx-8 rounded-lg text-white bg-regal-blue py-10">
-        {/* <button onClick={createStream}>Get Model ID</button> */}
+      <div className="grow mx-8 rounded-lg h-[100%] text-white bg-regal-blue py-10">
         <form
           onSubmit={() => {
             createStream(content);
@@ -92,7 +80,7 @@ const TweetSection = (props) => {
           <textarea
             placeholder="What's happening?"
             maxLength={280}
-            className="w-96 h-20 p-2 border border-gray-300 rounded-lg"
+            className="w-96 h-20 p-2 border border-gray-300 rounded-lg placeholder-gray-400 text-black"
             onChange={(e) => setContent(e.target.value)}
           />
           <div>
@@ -118,10 +106,10 @@ const TweetSection = (props) => {
       </div>
 
       {/* Timeline-section */}
-      <div className="flex-none bg-regal-blue w-72 text-black rounded-lg">
+      <div className="flex-none bg-regal-blue w-72 h-[100%] text-black rounded-lg mr-2">
         <ol class=" mt-6 relative ml-4 border-l border-gray-200 ">
           <li class="mb-10 ml-4">
-            <div class="absolute w-3 h-3 bg- gray rounded-full mt-1.5 -left-1.5 border border-white "></div>
+            <div class="absolute w-3 h-3 bg-gray rounded-full mt-1.5 -left-1.5 border border-white "></div>
             <time class="mb-1 text-sm font-normal leading-none text-white ">
               February 2022
             </time>
@@ -174,6 +162,18 @@ const TweetSection = (props) => {
             <h3 class="text-lg font-semibold text-white ">
               E-Commerce UI code in Tailwind CSS
             </h3>
+            <p class="text-base font-normal text-white ">
+              Get started with dozens of web components and interactive elements
+              built on top of Tailwind CSS.
+            </p>
+            <p class="text-base font-normal text-white ">
+              Get started with dozens of web components and interactive elements
+              built on top of Tailwind CSS.
+            </p>
+            <p class="text-base font-normal text-white ">
+              Get started with dozens of web components and interactive elements
+              built on top of Tailwind CSS.
+            </p>
             <p class="text-base font-normal text-white ">
               Get started with dozens of web components and interactive elements
               built on top of Tailwind CSS.
