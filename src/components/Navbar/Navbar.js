@@ -41,7 +41,7 @@ const Navbar = (props) => {
             </button>
           ) : (
             <button
-              class="flex items-center p-2 text-base font-normal bg-Bluish-white text-gray-900 rounded-lg overflow-hidden"
+              class="flex items-center p-2 text-base font-normal bg-white text-gray-900 rounded-lg md:hover:bg-Bluish-white overflow-hidden"
               onClick={() => {
                 Wallet();
               }
@@ -59,7 +59,7 @@ const Navbar = (props) => {
             <li>
               <a
                 href="#"
-                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                class="block py-2 pl-8 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-black md:hover:text-blue-700 md:hover:underline underline-offset-4 decoration-solid-4 decoration-sky-500 md:p-0"
                 aria-current="page"
               >
                 Home
@@ -68,7 +68,7 @@ const Navbar = (props) => {
             <li>
               <a
                 href="#"
-                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
+                class="block py-2 pl-16 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:hover:underline underline-offset-4 decoration-solid-4 decoration-black md:p-0 "
               >
                 Notifications
               </a>
@@ -76,19 +76,20 @@ const Navbar = (props) => {
             <li>
               <a
                 href="#"
-                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
+                class="block py-2 pl-16 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:hover:underline underline-offset-4 decoration-solid-4 decoration-black md:p-0 "
               >
-                Friends
+                Explore
               </a>
             </li>
             <li>
               <a
                 href="#"
-                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
+                class="block py-2 pl-16 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:hover:underline underline-offset-4 decoration-solid-4 decoration-black md:p-0 "
               >
-                Contact
+                Team
               </a>
             </li>
+           
           </ul>
         </div>
       </div>
