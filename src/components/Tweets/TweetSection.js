@@ -1,15 +1,56 @@
-import React from "react";
-import Navbar from "../Navbar/Navbar";
+import React, { useEffect } from "react";
+import { Apps, ModelNames, FileType, Currency } from "@dataverse/runtime-connector";
+import TweetCard from "../TweetCard/TweetCard";
 
+const TweetSection = (props) => {
+  const { runtimeConnector } = props;
+  const [tweets, setTweets] = React.useState([]);
+  const [did, setDid] = React.useState("");
+  const [content, setContent] = React.useState("");
+  const [stream, setStream] = React.useState([]);
 
-const TweetSection = () => {
+  const getDID = async () => {
+    const did = await runtimeConnector.getCurrentDID();
+    setDid(did);
+  };
+
+  // How to tweet
+  const createStream = async () => {
+    const streamObject = await runtimeConnector.createStream({
+      did: did,
+      appName: Apps.Dataverse,
+      modelName: ModelNames.post,
+      streamContent: {
+        appVersion: "0.0.1",
+        content: content,
+      },
+      fileType: FileType.Public,
+    });
+  };
+  // How to get a tweet
+  const getStream = async () => {
+    const streams = await runtimeConnector.loadStreamsByModel({
+      did: did,
+      appName: Apps.Dataverse,
+      modelName: ModelNames.post,
+    });
+    Object.keys(streams).forEach((stream) => {
+      let tweet = streams[stream].content.content;
+      setStream((prevStream) => [...prevStream, stream]);
+      setTweets((prevTweets) => [...prevTweets, tweet]);
+    });
+  };
+
+  useEffect(() => {
+    getDID();
+    getStream();
+  }, [did]);
   return (
     <div className="flex flex-wrap mt-8">
       {/* Profile-Section */}
       <div class=" bg-regal-blue h-64 w-64 text-white max-w-sm  border border-gray-200 rounded-lg shadow ">
-       
-          <img class="rounded-t-lg" src="" alt="profile photo" />
-       
+        <img class="rounded-t-lg" src="" alt="profile photo" />
+
         <div class="p-5">
           <a href="#">
             <h5 class="mb-2 text-2xl text-white font-bold tracking-tight text-gray-900 ">
@@ -38,12 +79,42 @@ const TweetSection = () => {
           </a>
         </div>
       </div>
-     
 
       {/* Tweet-Section */}
 
-      <div className="grow h-14 mx-8 rounded-lg text-white bg-regal-blue">
-        Tweets{" "}
+      <div className="grow mx-8 rounded-lg text-white bg-regal-blue py-10">
+        {/* <button onClick={createStream}>Get Model ID</button> */}
+        <form
+          onSubmit={() => {
+            createStream(content);
+          }}
+        >
+          <textarea
+            placeholder="What's happening?"
+            maxLength={280}
+            className="w-96 h-20 p-2 border border-gray-300 rounded-lg"
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <div>
+            <button type="submit" disabled={content.length === 0}>
+              Tweet
+            </button>
+          </div>
+        </form>
+        <div className="mt-2">
+          {tweets.map((tweet, index) => {
+            return (
+              <div className="mt-2" key={index}>
+                <TweetCard
+                  did={did}
+                  stream={stream[index]}
+                  tweet={tweet}
+                  runtimeConnector={runtimeConnector}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Timeline-section */}

@@ -1,31 +1,32 @@
-import React from "react";
-import { Apps, ModelNames, FileType } from "@dataverse/runtime-connector";
+import React, { useEffect } from "react";
+import { Apps, ModelNames, FileType, Currency } from "@dataverse/runtime-connector";
+import TweetCard from "../TweetCard/TweetCard";
 
 const Tweets = (props) => {
   const { runtimeConnector } = props;
   const [tweets, setTweets] = React.useState([]);
   const [did, setDid] = React.useState("");
+  const [content, setContent] = React.useState("");
+  const [stream, setStream] = React.useState([]);
 
   const getDID = async () => {
-    const did = await runtimeConnector.getDid();
+    const did = await runtimeConnector.getCurrentDID();
     setDid(did);
   };
 
   // How to tweet
-  const getModelID = async () => {
+  const createStream = async () => {
     const streamObject = await runtimeConnector.createStream({
       did: did,
       appName: Apps.Dataverse,
       modelName: ModelNames.post,
       streamContent: {
         appVersion: "0.0.1",
-        content: "Hello World",
+        content: content,
       },
       fileType: FileType.Public,
     });
-    console.log(streamObject);
   };
-
   // How to get a tweet
   const getStream = async () => {
     const streams = await runtimeConnector.loadStreamsByModel({
@@ -35,23 +36,41 @@ const Tweets = (props) => {
     });
     Object.keys(streams).forEach((stream) => {
       let tweet = streams[stream].content.content;
+      setStream((prevStream) => [...prevStream, stream]);
       setTweets((prevTweets) => [...prevTweets, tweet]);
     });
-    console.log(tweets);
   };
 
-  return (
-    <div className="mt-20">
-      {/* <button onClick={getModelID}>Get Model ID</button> */}
-      <button onClick={getStream}>Get Stream</button>
+  useEffect(() => {
+    getDID();
+    getStream();
+  }, [did]);
 
+  return (
+    <div className="mt-20 ml-80">
+      {/* <button onClick={createStream}>Get Model ID</button> */}
+      <form
+        onSubmit={() => {
+          createStream(content);
+        }}
+      >
+        <textarea
+          placeholder="What's happening?"
+          maxLength={280}
+          className="w-96 h-20 p-2 border border-gray-300 rounded-lg"
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <div>
+          <button type="submit" disabled={content.length === 0}>Tweet</button>
+        </div>
+      </form>
       <div className="mt-20">
         <h1 className="text-2xl">Tweets</h1>
         {tweets.map((tweet, index) => {
           return (
-            <p className="mt-2" key={index}>
-              {tweet}
-            </p>
+            <div className="mt-2" key={index}>
+              <TweetCard did={did} stream={stream[index]} tweet={tweet} runtimeConnector={runtimeConnector}/>
+            </div>
           );
         })}
       </div>

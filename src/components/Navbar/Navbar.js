@@ -10,11 +10,12 @@ const Navbar = (props) => {
   const [identity, setIdentity] = React.useState(null);
   const { runtimeConnector } = props;
   const connectWallet = async () => {
-    await runtimeConnector.switchNetwork(80001);
+    
     const did = await runtimeConnector.connectWallet({
       name: METAMASK,
       type: CRYPTO_WALLET_TYPE,
     });
+    await runtimeConnector.switchNetwork(80001);
     const identity = await runtimeConnector.connectIdentity({
       wallet: { name: METAMASK, type: CRYPTO_WALLET_TYPE },
       appName: Apps.Dataverse,
@@ -92,16 +93,3 @@ const Navbar = (props) => {
 };
 
 export default Navbar;
-
-// {identity ? (
-//   <button class="w-48 flex bg-blue-600 items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-blue-100 dark:hover:bg-gray-700 overflow-hidden">
-//     {identity}
-//   </button>
-// ) : (
-//   <button
-//     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-//     onClick={connectWallet}
-//   >
-//     Connect Wallet
-//   </button>
-// )}
