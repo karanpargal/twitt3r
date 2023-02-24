@@ -5,7 +5,7 @@ import { RuntimeConnector, Extension,Browser } from "@dataverse/runtime-connecto
 import { METAMASK, CRYPTO_WALLET_TYPE } from "@dataverse/runtime-connector";
 import { useEffect } from "react";
 import Tweets from "./components/Tweets/Tweets";
-
+import TweetSection from "./components/Tweets/TweetSection";
 const runtimeConnector = new RuntimeConnector(Extension);
 
 function App() {
@@ -13,7 +13,8 @@ function App() {
   return (
     <div className="App">
       <Navbar runtimeConnector={runtimeConnector}/>
-      <Tweets runtimeConnector={runtimeConnector}/>
+      {/* <Tweets runtimeConnector={runtimeConnector}/> */}
+      <TweetSection runtimeConnector={runtimeConnector}/>
 
     </div>
   );
