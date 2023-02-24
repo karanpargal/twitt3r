@@ -31,12 +31,12 @@ const Navbar = (props) => {
       <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="#" class="flex items-center">
           <span class="self-center text-xl text-white font-semibold whitespace-nowrap">
-            Flowbite
+            Twitt3r
           </span>
         </a>
         <div class="flex md:order-2">
           {identity ? (
-            <button class="w-48 flex bg-blue-600 items-center p-2 text-base font-normal text-gray-900 rounded-lg overflow-hidden">
+            <button class="w-48 flex text-white bg-blue-600 items-center p-2 text-base font-normal text-gray-900 rounded-lg overflow-hidden">
               {identity}
             </button>
           ) : (

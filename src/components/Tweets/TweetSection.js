@@ -84,7 +84,7 @@ const TweetSection = (props) => {
             onChange={(e) => setContent(e.target.value)}
           />
           <div>
-            <button type="submit" disabled={content.length === 0}>
+            <button type="submit" disabled={content.length === 0} className="bg-white rounded-md text-black p-1 px-8">
               Tweet
             </button>
           </div>
