@@ -83,7 +83,7 @@ const Navbar = (props) => {
             </li>
             <li>
               <a
-                href="#"
+                href="#team"
                 class="block py-2 pl-16 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:hover:underline underline-offset-4 decoration-solid-4 decoration-black md:p-0 "
               >
                 Team

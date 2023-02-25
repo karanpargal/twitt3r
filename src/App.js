@@ -10,15 +10,15 @@ import { METAMASK, CRYPTO_WALLET_TYPE } from "@dataverse/runtime-connector";
 import { useEffect } from "react";
 import Tweets from "./components/Tweets/Tweets";
 import TweetSection from "./components/Tweets/TweetSection";
-// import Team from "./components/Team/Team";
+import Team from "./components/Team/Team";
 const runtimeConnector = new RuntimeConnector(Extension);
 
 function App() {
   return (
-    <div className="App">
+    <div className="App ">
       <Navbar runtimeConnector={runtimeConnector} />
       <TweetSection runtimeConnector={runtimeConnector} />
-      {/* <Team runtimeConnector={runtimeConnector}/> */}
+      <Team />
     </div>
   );
 }
