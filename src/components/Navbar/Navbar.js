@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Apps,
   ModelNames,
@@ -25,6 +25,10 @@ const Navbar = (props) => {
     console.log(identity);
     setIdentity(identity);
   };
+
+  useEffect(() => {
+    Wallet();
+  }, []);
 
   return (
     <nav class="bg-regal-blue px-2 sm:px-4 py-2.5  ">

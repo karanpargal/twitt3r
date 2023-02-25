@@ -16,7 +16,6 @@ const TweetSection = (props) => {
     setDid(did);
   };
 
-  // How to tweet
   const createStream = async () => {
     const streamObject = await runtimeConnector.createStream({
       did: did,
@@ -90,7 +89,7 @@ const TweetSection = (props) => {
           </div>
         </form>
         <div className="mt-2">
-          {tweets.map((tweet, index) => {
+          {tweets.slice(0).reverse().map((tweet, index) => {
             return (
               <div className="mt-2" key={index}>
                 <TweetCard

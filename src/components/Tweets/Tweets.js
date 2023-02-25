@@ -74,7 +74,7 @@ const Tweets = (props) => {
       </form>
       <div className="mt-20">
         <h1 className="text-2xl">Tweets</h1>
-        {tweets.map((tweet, index) => {
+        {tweets.slice(0).reverse().map((tweet, index) => {
           return (
             <div className="mt-2" key={index}>
               <TweetCard

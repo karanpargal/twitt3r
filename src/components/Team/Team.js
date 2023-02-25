@@ -24,8 +24,8 @@ const Team = () => {
       name: "Mehul Dadlani",
       skills: "App Developer",
       image:
-        "https://drive.google.com/uc?export=view&id=1g8mYjzmunb_rUSpY67vu9NvnL7e-c4Zl",
-      github: "https://github.com/farhan121212",
+        "https://media.licdn.com/dms/image/C4E03AQF09HSJ3h0Syw/profile-displayphoto-shrink_800_800/0/1639947419039?e=1682553600&v=beta&t=HXeVVvw9w_oLOIyw27de14cnwWlASuVJTpIQq9h197M",
+      github: "https://github.com/M3hulD",
       linkedin: "https://www.linkedin.com/in/mehul-dadlani-103455146/",
     },
   ];
