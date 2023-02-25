@@ -41,6 +41,6 @@ Currently the presiding social medias available on web2 market are centralised a
 `Twitt3r` is available under the MIT license. See the [`LICENSE`](https://opensource.org/license/mit/) file for more info.
 
 # 🤝 Contributors
-<a href="https://github.com/karanpargal/twitt3r/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=karanpargal/twitt3r" />
+<a href="https://github.com/M3hulD/Twitt3r/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=M3hulD/Twitt3r" />
 </a>
